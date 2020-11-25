@@ -1,1 +1,57 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>journal app</title>
+    <link rel="stylesheet" type="style/css" href="/home/aheisleycook/journalApp/static/style.css">
+    <meta name="description" content="my journal">
+    <script>
+        
+        function getTime(){
+            var time = new Date();
+            
+            var timestate = documenta.getElementById("timelog");
+            timestate.innerHTML =  "current time" + time.getHours().toString() + ":"  + time.getMinutes().toString() + ":" + time.getSeconds().toString()  + time.getDay().toString() + "/" + time.getMonth().toString() + "/" + time.getFullYear().toString();
+        }
+        setInterval(getTime,1000)
+    </script>
+</head>
 
+<body onload="getTime();">
+    <form action="/add" method="POST">
+    <fieldset>
+        <header>
+    <h1>austin's journal</h1>
+</header>
+        <h2>my journal</h2>
+        Title
+        <input required type="text" name="title">
+        Desc
+        <input required type="text" name="desc">
+        <input type="submit" value="add">
+        <input type="reset">
+        
+    </fieldset>
+    </form>
+    <form method="POST"  action="/delete">
+     <legend>
+         record to delete 
+       <input type="text" name="title" value="enter a query">
+       <input type="submit">
+      </legend>
+    </form>
+    {% block code %}
+    
+    {% for enttry in a %}
+    <div class="Entry">
+        <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">{{enttry[0]}}</h2>
+        <hr>
+        <p>{{enttry[1]}}</p>
+        <hr>
+    </div>
+    {% endfor %}
+
+   {% endblock %}
+  <span style="border: 1px solid black; border-radius: 4cm;" id="timelog"></span>
+</body>
+</html>
