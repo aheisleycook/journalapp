@@ -2,12 +2,18 @@ from datetime import datetime, time
 from typing import Dict
 from flask import(Flask, render_template, request, Response, jsonify, redirect)
 import sqlite3
-import softwareproperties
-import ipaddress
-import datetime
+isAdmin = False
 app = Flask(__name__)
 db = sqlite3.connect("/home/aheisleycook/journalApp/db/journal.db")
 
+
+@app.route("/login")
+def Login():
+    user = request.form['username']
+    password = request.form['password']
+    db = sqlite3.connect("/home/aheisleycook/journalApp/db/journal.db")
+    conn = db.cursor()
+    f = conn.fetchone()
 
 @app.route("/delete", methods=["post"])
 def delete():
@@ -26,7 +32,9 @@ def Search():
     sql = 'Select * from entry where title=?'
     conn = db.cursor()
     conn.execute(sql(query,))
-    conn.fetchall()
+    s = conn.fetchall()
+    return render_template("index.html",s=s)
+
     
     
 
