@@ -3,40 +3,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>journal app</title>
-    <link rel="stylesheet" type="style/css" href="/home/aheisleycook/journalApp/static/style.css">
+    <style type="text/css">
+        header {
+    height: 40px;
+
+}
+.delete-Control {
+    visibility: hidden;
+}
+    </style>
     <meta name="description" content="my journal">
     <script>
         
         function getTime(){
             var time = new Date();
             
-            var timestate = documenta.getElementById("timelog");
+            var timestate = document.getElementById("timelog");
             timestate.innerHTML =  "current time" + time.getHours().toString() + ":"  + time.getMinutes().toString() + ":" + time.getSeconds().toString()  + time.getDay().toString() + "/" + time.getMonth().toString() + "/" + time.getFullYear().toString();
         }
         setInterval(getTime,1000)
+        function showDelete() {
+            let options  = document.getElementsByClassName("delete-Control");
+            options.display.visibility = "visible";
+        }
+        function hideDelete() {} {
+            let options  = document.getElementsByClassName("delete-Control");
+            options.display.visibility = "hidden";
+        }
+        function showSearch() {
+            let options  = document.getElementsByClassName("search-so");
+            options.display.visibility = "visible";
+        }
+        function hideSearch() {} {
+            let options  = document.getElementsByClassName("Search-option");
+            options.display.visibility = "hidden";
+        }
     </script>
 </head>
 
 <body onload="getTime();">
-    <form action="/add" method="POST">
-        <header>
-    <h1>austin's journal</h1>
+<header>
+        <h1>austin's journal</h1>
 </header>
-        <h2>my journal</h2>
-        Title
-        <input required type="text" name="title">
-        Desc
-        <input required type="text" name="desc">
-        <input type="submit" value="add">
-        <input type="reset">
-    </form>
+
+<div class="controls-dub">
+    <form action="/add" method="POST">
+            <h2>my journal</h2>
+            Title
+            <input required type="text" name="title">
+            Desc
+            <input required type="text" name="desc">
+            <input type="submit" value="add">
+            <input type="reset">
+        </form>
+    <div class="Delete-Control">
+        delete
+        <select>
+            <option onclick="showDelete();">on</option>
+            <option onclick="hideDelete();">off</option>
+        </select>
+
+        </div>
+        <div class="Search-Control">
+        search
+        <select>
+             <option onclick="showSearch();">on</option>
+            <option onclick="hideSearch();">off</option>
+        </select>
+        </div>
+
+    <div class="delete-option">
     <form method="POST"  action="/delete">
-     <legend>
-         record to delete 
+         record to delete
        <input type="text" name="title" value="enter a query">
        <input type="submit">
-      </legend>
+
     </form>
+     </div>
+</div>
     {% block code %}
     
     {% for enttry in a %}

@@ -1,8 +1,7 @@
-fieldset {
-    background-color: aquamarine;
-    
+header {
+    height: 40px;
 
 }
-h1 {
-    background: brown;
+.delete-option {
+    visibility: hidden;
 }
