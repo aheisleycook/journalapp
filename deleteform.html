@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        html {
+            width: auto;
+        }
+
+        header {
+            clip: auto;
+            background-color: black;
+            color: white;
+            width: 100%;
+
+        }
+
+
+
+        header>span {
+            position: relative;
+            left: 10px;
+            top: -2px;
+            outline: solid 1px 1px 1px 1px blue;
+        }
+
+        nav>li {
+            display: inline;
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body></body>
+<header>
+    <span>postboard.com</span>
+    <form class="postsearch" method="get" name="query" action="searchposts.php">
+        <input type="search">
+        <input type="submit">
+    </form>
+    <h3>landing page</h3>
+</header>
+</header>
+<nav>
+    <li><a href="/postboard/addform.html">addform</a></li>
+    <li><a href="/postboard/deleteform.html">deletform</a></li>
+    <li><a href="/">home</a></li>
+</nav>
+deletform
+<form action="deletepost.php" method="POST">
+    <input type="text" name="query" placeholder="enter  search therm" />
+    <input type="reset">
+    <br>
+    <input type="submit">
+
+
+</form>
+</body>
+
+</html>
+</body>
+
+</html>
